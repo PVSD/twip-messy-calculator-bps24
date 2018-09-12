@@ -5,69 +5,96 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
-        Scanner kb2 = new Scanner(System.in);
-        Scanner kb3 = new Scanner(System.in);
 
         double ans1;
         double ans2;
         String op1;
         int op2;
-        String operator;
+        String userOperator;
         String noun;
         String satisfaction;
+        String method;
 
         System.out.println("Select an operator:(add, subtract, multiply divide)");
-        op1 = kb.nextLine();
+        op1 = kb.next();
 
-        System.out.println("enter two numbers:");
+        System.out.println("Enter two numbers:(Ex: 13 904)");
         int int1 = kb.nextInt();
         int int2 = kb.nextInt();
 
         switch (op1) {
-            case "add" : ans1 = int1 + int2;
-                        noun = "sum";
-                        break;
-            case "subtract" : ans1 = int1 - int2;
-                        noun = "difference";
-                        break;
-            case "multiply" : ans1 = int1 * int2;
-                        noun = "product";
-                        break;
-            case "divide" : ans1 = int1 / int2;
-                        noun = "quotient";
-                        break;
-            default : ans1 = 5;
-                        noun = "answer";
+            case "add":
+                ans1 = int1 + int2;
+                noun = "sum";
+                break;
+            case "subtract":
+                ans1 = int1 - int2;
+                noun = "difference";
+                break;
+            case "multiply":
+                ans1 = int1 * int2;
+                noun = "product";
+                break;
+            case "divide":
+                ans1 = int1 / int2;
+                noun = "quotient";
+                break;
+            default:
+                ans1 = 9;
+                noun = "sum";
         }
 
-        op2 = (int)(Math.random()*7);
+        op2 = (int) (Math.random() * 6);
 
-                switch (op2){
-                    case 0 : ans2 = Math.sqrt(ans1);
-                        operator = "sqrt";
-                    case 1 : ans2 = Math.sin(ans1);
-                        operator = "sin";
-                    case 2 : ans2 = Math.cos(ans1);
-                        operator = "cos";
-                    case 3 : ans2 = Math.log(ans1);
-                        operator = "log";
-                    case 4 : ans2 = Math.exp(ans1);
-                        operator = "exp";
-                    case 5 : ans2 = Math.random();
-                        operator = "random";
-                    case 6 : ans2 = (ans1 % 2);
-                        operator = "modulus";
-                    default: ans2 = 5;
+        switch (op2) {
+            case 0:
+                ans2 = Math.sqrt(ans1);
+                userOperator = "sqrt";
+                break;
+            case 1:
+                ans2 = Math.sin(ans1);
+                userOperator = "sin";
+                break;
+            case 2:
+                ans2 = Math.cos(ans1);
+                userOperator = "cos";
+                break;
+            case 3:
+                ans2 = Math.log(ans1);
+                userOperator = "log";
+                break;
+            case 4:
+                ans2 = Math.exp(ans1);
+                userOperator = "exp";
+                break;
+            case 5:
+                ans2 = Math.random();
+                userOperator = "random";
+                break;
+            default:
+                ans2 = 5;
+                userOperator = "5";
+                break;
         }
 
         System.out.println("The " + noun + " of " + int1 + " and " + int2 + " is " + ans2 + ". Are you satisfied?");
-        satisfaction = kb.nextLine();
+        satisfaction = kb.next();
 
-
-
-
-
-
-
+        switch (satisfaction) {
+            case "yes":
+                System.out.println("You have been misinformed, I used the " + userOperator + " method after " + op1 + "ing your two numbers.");
+                break;
+            case "no":
+                System.out.println("Can you identify the math class method I ran to the real answer?");
+                method = kb.next();
+                if(method.equalsIgnoreCase(userOperator)){
+                    System.out.println("Great! Good job and goodbye!");
+                }
+                else System.out.println("That is incorrect, I used the " + userOperator + " method.");
+                break;
+            default:
+                System.out.println("error: enter 'yes' or 'no'");
+                break;
+        }
     }
 }
